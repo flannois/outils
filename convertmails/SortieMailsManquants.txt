@@ -1,0 +1,4 @@
+michel.bernard@exemple.fr
+julien.dupont@exemple.fr
+martine.durand@exemple.fr
+--------------
