@@ -36,15 +36,13 @@ def aireCercle(rayon):
     aire = pi * rayon**2
     return aire
 
-
-
 echelle = 100
 vitesse = 10
+marge = 50
 
-a = 3
+a = 4
 b = 2
-c = 4
-
+c = 3
 
 alpha, beta, phi = calculDesAngles(a, b, c)
 
@@ -56,14 +54,10 @@ alpha, beta, phi = calculDesAngles(a,b,c)
 # Vitesse de dessin
 turtle.speed(vitesse)
 
-# Daplacement du départ + à gauche
-turtle.up()
-turtle.forward(-400)
-turtle.down()
-turtle.write(alpha)
+# Changement couleur
+turtle.color("blue")
 
 # Dessin de b
-turtle.color("blue")
 turtle.forward(b*echelle)
 turtle.left(180-phi)
 turtle.write(phi)
