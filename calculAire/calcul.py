@@ -36,74 +36,54 @@ def aireCercle(rayon):
     aire = pi * rayon**2
     return aire
 
-def interieurTriangleHauteur(a, b):
-    # Calcul de la hauteur du triangle "intérieur"
-    """L'ERREUR EST ICI"""
-    # Il faut calculer la hauteur du triangle aligné sur le segment du rayon /!\ Penser aux médiatrices !
-    return 0
 
 
-def exterieurTriangleHauteur(rayonCercle, hauteurTriangle):
-    # Calcul de la hauteur du triangle "extérieur"
-    hauteurExterieurTriangle = rayonCercle * 2 - hauteurTriangle
-    return hauteurExterieurTriangle
+echelle = 100
+vitesse = 10
 
-def angleDuBas(b, hauteurExterieurTriangle):
-    hauteur = hauteurExterieurTriangle
-    largeur = b/2
-    angle = atan(hauteur/largeur)
-    angle = angle * 180 / pi
-    return angle
+a = 3
+b = 2
+c = 4
 
-def angleTotalBas(angle):
-    angle = angle * 2
-    return angle
-
-def cercleCoupe(aireCercle, angle):
-    aireTotale = aireCercle * angle / 360
-    return aireTotale
-
-
-
-a = 8
-b = 12
-c = 5
 
 alpha, beta, phi = calculDesAngles(a, b, c)
 
 r = rayonCercle(a, b, c)
 aireCercle = aireCercle(r)
-hauteurInterieurTriangle = interieurTriangleHauteur(a, b)
-hauteurExterieurTriangle = exterieurTriangleHauteur(r, hauteurInterieurTriangle)
-
-
-angle = angleDuBas(b, hauteurExterieurTriangle)
-angle = angleTotalBas(angle)
-
-aireTotale = cercleCoupe(aireCercle, angle)
 
 alpha, beta, phi = calculDesAngles(a,b,c)
 
-echelle = 50
-vitesse = 10
-
+# Vitesse de dessin
 turtle.speed(vitesse)
 
+# Daplacement du départ + à gauche
+turtle.up()
+turtle.forward(-400)
+turtle.down()
+turtle.write(alpha)
+
+# Dessin de b
+turtle.color("blue")
 turtle.forward(b*echelle)
 turtle.left(180-phi)
+turtle.write(phi)
 
+# Dessin de a
 turtle.forward(a*echelle)
 turtle.left(180-beta)
+turtle.write(beta)
 
+# Dessin de c
 turtle.forward(c*echelle)
 turtle.left(180-alpha)
 
-
+# Angle pour tracer le cercle
 turtle.right(beta)
 
+# Tracage du cercle
+turtle.color("red")
 turtle.circle(r*echelle)
 
-
-
+#Boucle infini
 turtle.mainloop()
 
