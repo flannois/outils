@@ -37,15 +37,12 @@ def aireCercle(rayon):
     return aire
 
 
-
-from random import randint
-
-echelle = 20
+echelle = 50
 vitesse = 10
 
-a = 15
-b = 20
-c = 12
+a = 5
+b = 6
+c = 7
 
 alpha, beta, phi = calculDesAngles(a, b, c)
 
@@ -61,15 +58,21 @@ turtle.speed(vitesse)
 turtle.color("blue")
 
 # Dessin de b
-turtle.forward(b*echelle)
+turtle.forward(b/2*echelle)
+turtle.write("b")
+turtle.forward(b/2*echelle)
 turtle.left(180-phi)
 
 # Dessin de a
-turtle.forward(a*echelle)
+turtle.forward(a/2*echelle)
+turtle.write("a")
+turtle.forward(a/2*echelle)
 turtle.left(180-beta)
 
 # Dessin de c
-turtle.forward(c*echelle)
+turtle.forward(c/2*echelle)
+turtle.write("c")
+turtle.forward(c/2*echelle)
 turtle.left(180-alpha)
 
 # Angle pour tracer le cercle
@@ -82,3 +85,4 @@ turtle.circle(r*echelle)
 #Boucle infini
 turtle.mainloop()
 
+t
