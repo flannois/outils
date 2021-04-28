@@ -36,13 +36,17 @@ def aireCercle(rayon):
     aire = pi * rayon**2
     return aire
 
-echelle = 100
-vitesse = 10
-marge = 50
 
-a = 4
-b = 2
-c = 3
+
+from randint import randint
+
+echelle = randint()
+vitesse = randint()
+marge = randint()
+
+a = randint()
+b = randint()
+c = randint()
 
 alpha, beta, phi = calculDesAngles(a, b, c)
 
