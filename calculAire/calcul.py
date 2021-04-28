@@ -40,9 +40,9 @@ def aireCercle(rayon):
 echelle = 50
 vitesse = 10
 
-a = 5
+a = 4.5
 b = 6
-c = 7
+c = 2
 
 alpha, beta, phi = calculDesAngles(a, b, c)
 
@@ -58,18 +58,27 @@ turtle.speed(vitesse)
 turtle.color("blue")
 
 # Dessin de b
+turtle.color("orange")
+turtle.write(round(alpha,2))
+turtle.color("blue")
 turtle.forward(b/2*echelle)
 turtle.write("b")
 turtle.forward(b/2*echelle)
 turtle.left(180-phi)
 
 # Dessin de a
+turtle.color("orange")
+turtle.write(round(phi,2))
+turtle.color("blue")
 turtle.forward(a/2*echelle)
 turtle.write("a")
 turtle.forward(a/2*echelle)
 turtle.left(180-beta)
 
 # Dessin de c
+turtle.color("orange")
+turtle.write(round(beta,2))
+turtle.color("blue")
 turtle.forward(c/2*echelle)
 turtle.write("c")
 turtle.forward(c/2*echelle)
@@ -85,4 +94,3 @@ turtle.circle(r*echelle)
 #Boucle infini
 turtle.mainloop()
 
-t
