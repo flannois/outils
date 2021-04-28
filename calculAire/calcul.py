@@ -40,12 +40,13 @@ echelle = 50
 vitesse = 10
 
 a = 6
-b = 4
-c = 9
+b = 8
+c = 3
 
 alpha, beta, phi = calculDesAngles(a, b, c)
 
 r = rayonCercle(a, b, c)
+print(r)
 aireCercle = aireCercle(r)
 
 alpha, beta, phi = calculDesAngles(a,b,c)
