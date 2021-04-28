@@ -38,15 +38,14 @@ def aireCercle(rayon):
 
 
 
-from randint import randint
+from random import randint
 
-echelle = randint()
-vitesse = randint()
-marge = randint()
+echelle = 20
+vitesse = 10
 
-a = randint()
-b = randint()
-c = randint()
+a = 15
+b = 20
+c = 12
 
 alpha, beta, phi = calculDesAngles(a, b, c)
 
@@ -64,12 +63,10 @@ turtle.color("blue")
 # Dessin de b
 turtle.forward(b*echelle)
 turtle.left(180-phi)
-turtle.write(phi)
 
 # Dessin de a
 turtle.forward(a*echelle)
 turtle.left(180-beta)
-turtle.write(beta)
 
 # Dessin de c
 turtle.forward(c*echelle)
