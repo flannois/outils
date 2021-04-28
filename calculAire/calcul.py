@@ -18,7 +18,7 @@ def calculAngle(a,b,c):
     return angle
 
 def calculDesAngles(a,b,c):
-  # calcul des trois angles (renvoi alpha, beta et phi)
+    # Calcul des trois angles (renvoi alpha, beta et phi)
     alpha = calculAngle(a,b,c)
     beta = calculAngle(b,c,a)
     phi = calculAngle(c,a,b)
@@ -36,13 +36,12 @@ def aireCercle(rayon):
     aire = pi * rayon**2
     return aire
 
-
 echelle = 50
 vitesse = 10
 
-a = 4.5
-b = 6
-c = 2
+a = 6
+b = 4
+c = 9
 
 alpha, beta, phi = calculDesAngles(a, b, c)
 
