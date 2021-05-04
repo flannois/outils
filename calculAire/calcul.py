@@ -18,11 +18,17 @@ def calculAngle(a,b,c):
     return angle
 
 def calculDesAngles(a,b,c):
-    # Calcul des trois angles (renvoi alpha, beta et phi)
+    # Tri des valeurs pour avoir le plus grand côté en bas (0°)
+    if a > b and a > c:
+        a,b,c = c,a,b
+    elif c > b and c > a:
+        a,b,c = a,c,b
+    
+    # Calcul des trois angles (renvoi a, b, c, alpha, beta et phi)
     alpha = calculAngle(a,b,c)
     beta = calculAngle(b,c,a)
     phi = calculAngle(c,a,b)
-    return alpha, beta, phi
+    return a, b, c, alpha, beta, phi
 
 def rayonCercle(a,b,c):
     # Calcul du rayon du cercle
@@ -37,19 +43,18 @@ def aireCercle(rayon):
     return aire
 
 echelle = 50
-vitesse = 10
+vitesse = 50
 
-a = 6
-b = 8
-c = 3
+a = 4
+b = 5
+c = 7
 
-alpha, beta, phi = calculDesAngles(a, b, c)
+a, b, c, alpha, beta, phi = calculDesAngles(a, b, c)
 
 r = rayonCercle(a, b, c)
 print(r)
 aireCercle = aireCercle(r)
 
-alpha, beta, phi = calculDesAngles(a,b,c)
 
 # Vitesse de dessin
 turtle.speed(vitesse)
