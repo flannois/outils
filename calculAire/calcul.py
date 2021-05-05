@@ -21,13 +21,16 @@ def calculAngle(a,b,c):
     angle = angle * 180 / pi
     return angle
 
-def calculDesAngles(a,b,c):
+def triDesValeurs(a,b,c):    
     # Tri des valeurs pour avoir le plus grand côté en bas (0°)
     if a > b and a > c:
         a,b,c = c,a,b
     elif c > b and c > a:
         a,b,c = a,c,b
-    
+        return a, b, c
+
+def calculDesAngles(a,b,c):
+  
     # Calcul des trois angles (renvoi a, b, c, alpha, beta et phi)
     alpha = calculAngle(a,b,c)
     beta = calculAngle(b,c,a)
