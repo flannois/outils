@@ -47,19 +47,30 @@ def aireCercle(rayon):
     aire = pi * rayon**2
     return aire
 
+
+largeurFenetre = 800
+hauteurFenetre = 600
+
 echelle = 25
 vitesse = 50
 
-a = 9
-b = 4
-c = 6
+a = 5
+b = 5
+c = 9
 
 
 a, b, c, alpha, beta, phi = calculDesAngles(a, b, c)
-
 r = rayonCercle(a, b, c)
+
+# Grossissement
+a = a*echelle
+b = b*echelle
+c = c*echelle
+r = r*echelle
 aireCercle = aireCercle(r)
 
+# Taille fenêtre
+turtle.setup(width=largeurFenetre,height=hauteurFenetre)
 
 # Vitesse de dessin
 turtle.speed(vitesse)
@@ -71,27 +82,27 @@ turtle.color("blue")
 turtle.color("orange")
 turtle.write(round(alpha,2))
 turtle.color("blue")
-turtle.forward(b/2*echelle)
+turtle.forward(b/2)
 turtle.write("b")
-turtle.forward(b/2*echelle)
+turtle.forward(b/2)
 turtle.left(180-phi)
 
 # Dessin de a
 turtle.color("orange")
 turtle.write(round(phi,2))
 turtle.color("blue")
-turtle.forward(a/2*echelle)
+turtle.forward(a/2)
 turtle.write("a")
-turtle.forward(a/2*echelle)
+turtle.forward(a/2)
 turtle.left(180-beta)
 
 # Dessin de c
 turtle.color("orange")
 turtle.write(round(beta,2))
 turtle.color("blue")
-turtle.forward(c/2*echelle)
+turtle.forward(c/2)
 turtle.write("c")
-turtle.forward(c/2*echelle)
+turtle.forward(c/2)
 turtle.left(180-alpha)
 
 # Angle pour tracer le cercle
@@ -99,15 +110,9 @@ turtle.right(beta)
 
 # Tracage du cercle
 turtle.color("red")
-turtle.circle(r*echelle)
+turtle.circle(r)
 
-# tracage médiatrice "b"
-turtle.color("blue")
-turtle.left(beta)
-turtle.forward(b/2*echelle)
-turtle.color("grey")
-turtle.right(90)
-turtle.forward(r*echelle)
+
 
 
 
