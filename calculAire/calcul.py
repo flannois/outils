@@ -11,7 +11,6 @@
 from math import acos, pi, sqrt, atan
 import turtle
 
-
 # Import pour l'automatisation
 from random import randint
 
@@ -47,19 +46,28 @@ def aireCercle(rayon):
     aire = pi * rayon**2
     return aire
 
+def automatisation():
+    while True:
+        a = randint(1,14)
+        b = randint(1,14)
+        c = randint(1,14)
+        if a+b > c and a+c > b and b+c > a:
+            return a,b,c
 
+
+#----------------Paramètres----------------
 largeurFenetre = 800
 hauteurFenetre = 600
-
 echelle = 25
 vitesse = 50
 
-a = 5
-b = 5
-c = 9
+# Automatisation
+a,b,c = automatisation()
 
-
+# Calculs des angles
 a, b, c, alpha, beta, phi = calculDesAngles(a, b, c)
+
+# Calcul rayon cercle
 r = rayonCercle(a, b, c)
 
 # Grossissement
@@ -83,7 +91,7 @@ turtle.color("orange")
 turtle.write(round(alpha,2))
 turtle.color("blue")
 turtle.forward(b/2)
-turtle.write("b")
+turtle.write("b = {}".format(b/echelle))
 turtle.forward(b/2)
 turtle.left(180-phi)
 
@@ -92,7 +100,7 @@ turtle.color("orange")
 turtle.write(round(phi,2))
 turtle.color("blue")
 turtle.forward(a/2)
-turtle.write("a")
+turtle.write("a = {}".format(a/echelle))
 turtle.forward(a/2)
 turtle.left(180-beta)
 
@@ -101,7 +109,7 @@ turtle.color("orange")
 turtle.write(round(beta,2))
 turtle.color("blue")
 turtle.forward(c/2)
-turtle.write("c")
+turtle.write("c = {}".format(c/echelle))
 turtle.forward(c/2)
 turtle.left(180-alpha)
 
