@@ -11,6 +11,11 @@
 from math import acos, pi, sqrt, atan
 import turtle
 
+
+# Import pour l'automatisation
+from random import randint
+
+
 def calculAngle(a,b,c):
     # Calcul de l'angle en fonction des a, b et c, a étant la longueur en face de l'angle
     angle = acos((a**2 - b**2 - c**2)/(-2*b*c))
@@ -42,17 +47,17 @@ def aireCercle(rayon):
     aire = pi * rayon**2
     return aire
 
-echelle = 50
+echelle = 25
 vitesse = 50
 
-a = 4
-b = 5
-c = 7
+a = 9
+b = 4
+c = 6
+
 
 a, b, c, alpha, beta, phi = calculDesAngles(a, b, c)
 
 r = rayonCercle(a, b, c)
-print(r)
 aireCercle = aireCercle(r)
 
 
@@ -95,6 +100,16 @@ turtle.right(beta)
 # Tracage du cercle
 turtle.color("red")
 turtle.circle(r*echelle)
+
+# tracage médiatrice "b"
+turtle.color("blue")
+turtle.left(beta)
+turtle.forward(b/2*echelle)
+turtle.color("grey")
+turtle.right(90)
+turtle.forward(r*echelle)
+
+
 
 #Boucle infini
 turtle.mainloop()
