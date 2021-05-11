@@ -57,12 +57,14 @@ def automatisation():
         if a+b > c and a+c > b and b+c > a:
             return a,b,c
 
-
 #----------------Paramètres----------------
 largeurFenetre = 800
-hauteurFenetre = 600
+hauteurFenetre = 800
 echelle = 25
 vitesse = 50
+
+tailleStylo = 2
+turtle.pensize(tailleStylo)
 
 # Automatisation
 a,b,c = automatisation()
@@ -78,6 +80,13 @@ a = a*echelle
 b = b*echelle
 c = c*echelle
 r = r*echelle
+
+# Centrage
+turtle.up()
+turtle.goto(-r/2,-r/2)
+turtle.down()
+
+# Calcul de l'aire
 aireCercle = aireCercle(r)
 
 # Taille fenêtre
