@@ -1,0 +1,42 @@
+sudo -i 
+export SYNO_Username='{{login_syno}}'
+export SYNO_Password='{{mot_de_passe_syno}}'
+
+# POUR AVOIR LES CLEF API 
+#https://api.ovh.com/createToken/?GET=/domain/zone/{{nom_de_domaine}}/*&POST=/domain/zone/{{nom_de_domaine}}/*&PUT=/domain/zone/{{nom_de_domaine}}/*&GET=/domain/zone/{{nom_de_domaine}}&DELETE=/domain/zone/{{nom_de_domaine}}/record/*
+
+export OVH_AK="{{fourni_par_API}}"
+export OVH_AS="{{fourni_par_API}}"
+export OVH_CK="{{fourni_par_API}}"
+
+export CERT_DOMAIN="{{nom_de_domaine}}"
+export CERT_WDOMAIN="*.{{nom_de_domaine}}"
+export SYNO_Certificate="{{nom_affichage_DSM}}"
+
+cd /volume1
+mkdir -p Certs/Acme_install
+cd Certs/Acme_install
+wget https://github.com/acmesh-official/acme.sh/archive/master.tar.gz
+tar xvf master.tar.gz
+cd acme.sh-master
+ACME_HOME="/usr/local/share/acme.sh"
+CERT_HOME="/volume1/Certs"
+./acme.sh --install --nocron --home "$ACME_HOME" --cert-home "$CERT_HOME" --accountemail "{{email}}"
+source ~/.profile
+ls -al
+chmod a+x acme.sh
+./acme.sh --upgrade --auto-upgrade
+export OVH_END_POINT=ovh-eu
+cd $ACME_HOME
+export CERT_DNS="dns_ovh"
+./acme.sh --issue --keylength 4096 -d "$CERT_DOMAIN" -d "$CERT_WDOMAIN" --dns "$CERT_DNS" --set-default-ca --server letsencrypt --set-default-ca --server letsencrypt
+./acme.sh --issue --keylength 4096 -d "$CERT_DOMAIN" -d "$CERT_WDOMAIN" --dns "$CERT_DNS"
+pwd
+export SYNO_Scheme="http"
+export SYNO_Hostname="localhost"
+export SYNO_Port="5000"
+export SYNO_Certificate=""
+./acme.sh --deploy -d "$CERT_DOMAIN" --deploy-hook synology_dsm
+export SYNO_Create=1
+./acme.sh --deploy -d "$CERT_DOMAIN" --deploy-hook synology_dsm
+./acme.sh --deploy -d "secondNiv.$CERT_DOMAIN" --deploy-hook synology_dsm
